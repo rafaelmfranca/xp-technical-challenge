@@ -19,6 +19,11 @@ const customJestConfig = {
     'src/components/**/*.tsx',
     '!src/pages/**/_*.tsx',
   ],
+  resolver: '<rootDir>/.jest/resolver.ts',
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '@components': '<rootDir>/src/components/index.ts',
+  },
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

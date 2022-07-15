@@ -1,10 +1,31 @@
+import Home from '@/pages';
 import { render, screen } from '@testing-library/react';
-import Home from 'src/pages/index';
 
-describe('first describe', () => {
-  it('first it', async () => {
-    render(<Home />);
+describe('✅ <Home />', () => {
+  describe('➡️ Render', () => {
+    it('should render the page', () => {
+      render(<Home />);
+      expect(screen.getByRole('main')).toBeInTheDocument();
+    });
 
-    expect(screen.getByText(/hello world/i)).toBeInTheDocument();
+    it('should render the hero', () => {
+      render(<Home />);
+      expect(screen.getByRole('heading')).toBeInTheDocument();
+    });
+
+    it('should have an email and password fields', () => {
+      render(<Home />);
+
+      expect(screen.getByText(/e\-mail/i)).toBeInTheDocument();
+      expect(screen.getByText(/senha/i)).toBeInTheDocument();
+    });
+
+    it('should have an login button', () => {
+      render(<Home />);
+
+      expect(
+        screen.getByRole('button', { name: /acessar/i }),
+      ).toBeInTheDocument();
+    });
   });
 });

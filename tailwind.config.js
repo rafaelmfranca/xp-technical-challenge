@@ -3,7 +3,11 @@ module.exports = {
   content: ['src/pages/**/*.tsx', 'src/components/**/*.tsx'],
 
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: 'Roboto, sans-serif',
+      },
+    },
   },
   plugins: [require('daisyui')],
 

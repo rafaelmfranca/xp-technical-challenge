@@ -1,7 +1,7 @@
+import useAuth from '@/hooks/useAuth';
 import loginFormSchema from '@/schemas/login';
-import { Button, Input } from '@components';
+import { Button, ErrorToast, Input } from '@components';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 type LoginFormData = {
@@ -19,11 +19,10 @@ export default function LoginForm() {
     resolver: yupResolver(loginFormSchema),
   });
 
-  const router = useRouter();
+  const { handleLogin, error } = useAuth();
 
   const handleSignIn: SubmitHandler<LoginFormData> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    router.push('/ativos');
+    await handleLogin(data);
   };
 
   return (
@@ -53,6 +52,7 @@ export default function LoginForm() {
         error={errors.password}
       />
       <Button label="Acessar" isSubmitting={isSubmitting} isValid={isValid} />
+      {error && <ErrorToast message={error} />}
     </form>
   );
 }

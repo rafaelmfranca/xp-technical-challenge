@@ -1,5 +1,5 @@
-type Props = {};
+import { Header } from '@components';
 
-export default function Ativos({}: Props) {
-  return <div>Ativos</div>;
+export default function Ativos() {
+  return <Header />;
 }

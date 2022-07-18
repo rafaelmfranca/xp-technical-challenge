@@ -8,6 +8,7 @@ type InputProps = {
   placeholder?: string;
   error?: FieldError;
   autoComplete?: string;
+  step?: string;
 };
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (

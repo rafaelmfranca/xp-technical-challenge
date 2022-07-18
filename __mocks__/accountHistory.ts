@@ -24,7 +24,7 @@ const accountHistory = [
     historyId: 'cl5pgukoe011158rydbt6cln9',
     createdAt: '2022-07-17T15:21:52.430Z',
     type: 'DEPOSIT',
-    amount: '200',
+    amount: '210',
     clientId: 'cec5d8a3-1cba-4b69-ae15-87ba284dd51b',
   },
 ];

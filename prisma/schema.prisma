@@ -7,12 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum HistoryType {
+  DEPOSIT
+  WITHDRAWAL
+}
+
 model Client {
-  clientId  String   @id @default(cuid()) @map("client_id")
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now()) @map("created_at")
-  balance   Decimal  @default(0.00)
+  clientId      String          @id @default(cuid()) @map("client_id")
+  email         String          @unique
+  password      String
+  createdAt     DateTime        @default(now()) @map("created_at")
+  balance       Decimal         @default(0.00)
+  clientHistory ClientHistory[]
 
   @@map("clients")
+}
+
+model ClientHistory {
+  historyId String      @id @default(cuid()) @map("history_id")
+  createdAt DateTime    @default(now()) @map("created_at")
+  type      HistoryType
+  amount    Decimal
+
+  client   Client @relation(fields: [clientId], references: [clientId])
+  clientId String @map("client_id")
+
+  @@map("clients_history")
 }

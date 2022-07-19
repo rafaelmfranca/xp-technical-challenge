@@ -1,3 +1,4 @@
+import { formatCurrency } from '@/helpers/formatCurrency';
 import { format } from 'date-fns';
 import ptBr from 'date-fns/locale/pt-BR';
 
@@ -15,12 +16,7 @@ export default function Balance({ balance }: BalanceProps) {
       <div className="p-2 shadow-md card bg-base-100">
         <div className="stat">
           <div className="stat-title">Saldo em conta</div>
-          <div className="stat-value">
-            {balance.toLocaleString('pt-br', {
-              style: 'currency',
-              currency: 'BRL',
-            })}
-          </div>
+          <div className="stat-value">{formatCurrency(balance)}</div>
           <div className="stat-desc">Atualizado em {date}</div>
         </div>
         <div className="flex justify-between p-4">

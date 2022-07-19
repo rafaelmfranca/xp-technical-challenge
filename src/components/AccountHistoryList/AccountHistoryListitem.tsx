@@ -1,3 +1,4 @@
+import { formatCurrency } from '@/helpers/formatCurrency';
 import { AccountHistory } from '@/types/shared';
 import { format } from 'date-fns';
 import ptBr from 'date-fns/locale/pt-BR';
@@ -20,12 +21,7 @@ export default function AccountHistoryListitem({
         </div>
       </td>
       <td>
-        <span className="font-medium">
-          {Number(amount).toLocaleString('pt-br', {
-            style: 'currency',
-            currency: 'BRL',
-          })}
-        </span>
+        <span className="font-medium">{formatCurrency(Number(amount))}</span>
         <br />
         <span className="badge badge-ghost badge-sm">
           {type === 'DEPOSIT' ? 'Depósito' : 'Retirada'}

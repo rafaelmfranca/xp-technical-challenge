@@ -1,5 +1,7 @@
+import AuthContext from '@/contexts/auth/context';
 import { Header } from '@components';
 import { render, screen } from '@testing-library/react';
+import contextValue from '__mocks__/authContext';
 
 const useRouter = jest.spyOn(require('next/router'), 'useRouter');
 
@@ -9,7 +11,11 @@ describe('✅ <Header />', () => {
 
   describe('➡️ Render', () => {
     it('should render correctly', () => {
-      render(<Header />);
+      render(
+        <AuthContext.Provider value={contextValue}>
+          <Header />
+        </AuthContext.Provider>,
+      );
 
       expect(screen.getByRole('banner')).toBeInTheDocument();
       expect(screen.getByRole('list')).toBeInTheDocument();
@@ -18,7 +24,11 @@ describe('✅ <Header />', () => {
     });
 
     it('should render list items correctly', () => {
-      render(<Header />);
+      render(
+        <AuthContext.Provider value={contextValue}>
+          <Header />
+        </AuthContext.Provider>,
+      );
 
       const listItems = screen.getAllByRole('listitem');
 
@@ -28,7 +38,11 @@ describe('✅ <Header />', () => {
     });
 
     it('should render links correctly', () => {
-      render(<Header />);
+      render(
+        <AuthContext.Provider value={contextValue}>
+          <Header />
+        </AuthContext.Provider>,
+      );
 
       expect(screen.getByRole('link', { name: /ativos/i })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: /conta/i })).toBeInTheDocument();

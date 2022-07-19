@@ -1,4 +1,5 @@
 import useAccount from '@/hooks/useAccount';
+import useAuth from '@/hooks/useAuth';
 import depositSchema from '@/schemas/deposit';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -11,6 +12,7 @@ type DepositFormData = {
 
 export default function DepositModal() {
   const { mutate } = useSWRConfig();
+  const { clientId } = useAuth();
   const { handleAddDeposit } = useAccount();
   const {
     register,
@@ -24,7 +26,7 @@ export default function DepositModal() {
 
   const handleSubmitDeposit: SubmitHandler<DepositFormData> = async (data) => {
     await handleAddDeposit({ ...data, type: 'DEPOSIT' });
-    mutate('/api/conta');
+    mutate(`/api/conta/${clientId}`);
     reset();
 
     // i will fix that

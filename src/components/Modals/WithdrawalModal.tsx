@@ -1,4 +1,5 @@
 import useAccount from '@/hooks/useAccount';
+import useAuth from '@/hooks/useAuth';
 import generateWithdrawalSchema from '@/schemas/withdrawal';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -11,6 +12,7 @@ type WithdrawalFormData = {
 
 export default function WithdrawalModal() {
   const { mutate } = useSWRConfig();
+  const { clientId } = useAuth();
   const { handleAddWithdrawal, balance } = useAccount();
   const {
     register,
@@ -26,7 +28,7 @@ export default function WithdrawalModal() {
     data,
   ) => {
     await handleAddWithdrawal({ ...data, type: 'WITHDRAWAL' });
-    mutate('/api/conta');
+    mutate(`/api/conta/${clientId}`);
     reset();
 
     // i will fix that

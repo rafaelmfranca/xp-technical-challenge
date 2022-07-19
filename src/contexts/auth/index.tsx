@@ -9,13 +9,18 @@ type AuthProviderProps = {
 };
 
 export default function AuthProvider({ children }: AuthProviderProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [clientId, setClientId] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
 
   useEffect(() => {
-    const localSession = localStorage.getItem('session');
-    localSession && setIsAuthenticated(true);
+    const session = localStorage.getItem('session');
+    if (session) {
+      const { email, clientId } = JSON.parse(session);
+      setClientId(clientId);
+      setEmail(email);
+    }
   }, []);
 
   const handleLogin = async ({ email, password }: LoginPayload) => {
@@ -26,14 +31,19 @@ export default function AuthProvider({ children }: AuthProviderProps) {
       return;
     }
 
-    localStorage.setItem('session', JSON.stringify(data.email));
+    setClientId(data.clientId);
+    setEmail(data.email);
+    localStorage.setItem(
+      'session',
+      JSON.stringify({ clientId: data.clientId, email: data.email }),
+    );
     error && setError('');
-    setIsAuthenticated(true);
     router.push('/ativos');
   };
 
   const contextValue: AuthContextData = {
-    isAuthenticated,
+    clientId,
+    email,
     error,
     handleLogin,
   };

@@ -12,5 +12,5 @@ export default async function handler(req: Req, res: Res) {
     return res.json({ error: 'E-mail ou senha inválidos' });
   }
 
-  return res.json(user);
+  return res.json({ clientId: user.clientId, email });
 }

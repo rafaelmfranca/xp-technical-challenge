@@ -8,8 +8,6 @@ const baseURL =
 export const api = axios.create({ baseURL });
 
 export const fetcher = async (url: string) => {
-  const { data } = await api.get(url, {
-    data: { email: localStorage.getItem('session') },
-  });
+  const { data } = await api.get(url);
   return data;
 };

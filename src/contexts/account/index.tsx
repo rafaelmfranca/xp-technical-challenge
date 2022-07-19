@@ -1,4 +1,4 @@
-import useSession from '@/hooks/useSession';
+import useAuth from '@/hooks/useAuth';
 import { api, fetcher } from '@/lib/axios';
 import {
   AccountContextData,
@@ -15,12 +15,13 @@ type AccountProviderProps = {
 };
 
 export default function AccountProvider({ children }: AccountProviderProps) {
-  const { data } = useSWR('/api/conta', fetcher, {
-    revalidateIfStale: true,
+  const { clientId } = useAuth();
+  const { data } = useSWR(`/api/conta/${clientId}`, fetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
   });
   const [accountHistory, setAccountHistory] = useState<AccountHistory[]>([]);
   const [balance, setBalance] = useState(0.0);
-  const { email } = useSession();
 
   useEffect(() => {
     if (data) {
@@ -30,11 +31,11 @@ export default function AccountProvider({ children }: AccountProviderProps) {
   }, [data]);
 
   const handleAddDeposit = async (depositPayload: DepositPayload) => {
-    await api.post('api/conta/deposito', { ...depositPayload, email });
+    await api.post('api/conta/deposito', { ...depositPayload, clientId });
   };
 
   const handleAddWithdrawal = async (withdrawalPayload: WithdrawalPayload) => {
-    await api.post('api/conta/retirada', { ...withdrawalPayload, email });
+    await api.post('api/conta/retirada', { ...withdrawalPayload, clientId });
   };
 
   const contextValue: AccountContextData = {

@@ -19,6 +19,7 @@ model Client {
   createdAt     DateTime        @default(now()) @map("created_at")
   balance       Decimal         @default(0.00)
   clientHistory ClientHistory[]
+  transactions  Transaction[]
 
   @@map("clients")
 }
@@ -33,4 +34,29 @@ model ClientHistory {
   clientId String @map("client_id")
 
   @@map("clients_history")
+}
+
+model AvailableAssets {
+  assetId     String        @id @default(cuid()) @map("asset_id")
+  ticker      String        @unique
+  variation   Decimal
+  amount      Int
+  unitPrice   Decimal       @map("unit_price")
+  transaction Transaction[]
+
+  @@map("available_assets")
+}
+
+model Transaction {
+  transactionId String   @id @default(cuid()) @map("transaction_id")
+  createdAt     DateTime @default(now()) @map("created_at")
+  amount        Int
+
+  asset   AvailableAssets @relation(fields: [assetId], references: [assetId])
+  assetId String          @map("asset_id")
+
+  client   Client @relation(fields: [clientId], references: [clientId])
+  clientId String @map("client_id")
+
+  @@map("transactions")
 }

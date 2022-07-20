@@ -12,8 +12,7 @@ export default async function handler(req: Req, res: Res) {
     where: { assetId },
   });
 
-  const balance =
-    Number(client?.balance) - Number(asset?.unitPrice) * purchaseQuantity;
+  const balance = Number(client?.balance) - Number(asset?.unitPrice) * purchaseQuantity;
   const updatedAssetAmount = Number(asset?.amount) - purchaseQuantity;
 
   const response = await prisma.client.update({

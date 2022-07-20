@@ -14,11 +14,7 @@ export default function NavMenuItem({ href, title, icon }: NavMenuItemProps) {
   return (
     <li>
       <Link href={href}>
-        <a
-          className={
-            router.asPath === href ? 'bg-primary text-primary-content' : ''
-          }
-        >
+        <a className={router.asPath === href ? 'bg-primary text-primary-content' : ''}>
           {icon}
           <span className="font-medium">{title}</span>
         </a>

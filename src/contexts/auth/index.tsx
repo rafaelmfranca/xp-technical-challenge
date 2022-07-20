@@ -33,10 +33,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
 
     setClientId(data.clientId);
     setEmail(data.email);
-    localStorage.setItem(
-      'session',
-      JSON.stringify({ clientId: data.clientId, email: data.email }),
-    );
+    localStorage.setItem('session', JSON.stringify({ clientId: data.clientId, email: data.email }));
     error && setError('');
     router.push('/ativos');
   };
@@ -48,7 +45,5 @@ export default function AuthProvider({ children }: AuthProviderProps) {
     handleLogin,
   };
 
-  return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 }

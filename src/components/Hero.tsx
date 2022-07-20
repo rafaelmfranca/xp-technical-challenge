@@ -8,9 +8,8 @@ export default function Hero() {
           <div className="text-center lg:text-left">
             <h1 className="text-3xl font-bold">Acesse sua conta!</h1>
             <p className="py-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-              soluta veniam blanditiis architecto, distinctio ratione excepturi
-              dolores officia fuga aliquam at.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci soluta veniam
+              blanditiis architecto, distinctio ratione excepturi dolores officia fuga aliquam at.
             </p>
           </div>
 

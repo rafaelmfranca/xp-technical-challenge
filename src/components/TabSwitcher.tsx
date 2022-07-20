@@ -3,10 +3,7 @@ type TabSwitcherProps = {
   handleTabChange: (index: number) => void;
 };
 
-export default function TabSwitcher({
-  tabIndex,
-  handleTabChange,
-}: TabSwitcherProps) {
+export default function TabSwitcher({ tabIndex, handleTabChange }: TabSwitcherProps) {
   return (
     <div className="flex justify-center w-full p-4 sm:p-8">
       <div className="font-medium border tabs tabs-boxed bg-base-100 border-base-300">

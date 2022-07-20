@@ -25,10 +25,7 @@ export default function Balance({ balance }: BalanceProps) {
               Depósito
             </label>
           </button>
-          <button
-            className="btn btn-sm btn-error modal-button"
-            disabled={balance === 0}
-          >
+          <button className="btn btn-sm btn-error modal-button" disabled={balance === 0}>
             <label htmlFor="withdrawal-modal" className="cursor-pointer">
               Retirada
             </label>

@@ -19,9 +19,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     <div className="form-control">
       <label className="label">
         <span className="label-text">{label}</span>
-        {error && (
-          <span className="label-text-alt text-error">{error.message}</span>
-        )}
+        {error && <span className="label-text-alt text-error">{error.message}</span>}
       </label>
       <input
         name={name}

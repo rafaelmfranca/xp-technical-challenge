@@ -16,9 +16,7 @@ type AssetPurchaseModalProps = {
   desiredAsset: string;
 };
 
-export default function AssetPurchaseModal({
-  desiredAsset,
-}: AssetPurchaseModalProps) {
+export default function AssetPurchaseModal({ desiredAsset }: AssetPurchaseModalProps) {
   const { clientId } = useAuth();
   const { mutate } = useSWRConfig();
   const { balance } = useAccount();
@@ -32,11 +30,7 @@ export default function AssetPurchaseModal({
   } = useForm<AssetPurchaseFormData>({
     mode: 'onChange',
     resolver: yupResolver(
-      generateAssetPurchaseSchema(
-        balance,
-        Number(asset?.amount),
-        Number(asset?.unitPrice),
-      ),
+      generateAssetPurchaseSchema(balance, Number(asset?.amount), Number(asset?.unitPrice)),
     ),
     defaultValues: {
       amount: 0,
@@ -50,9 +44,7 @@ export default function AssetPurchaseModal({
     })();
   }, [desiredAsset]);
 
-  const handleSubmitPurchase: SubmitHandler<AssetPurchaseFormData> = async (
-    data,
-  ) => {
+  const handleSubmitPurchase: SubmitHandler<AssetPurchaseFormData> = async (data) => {
     await handleAssetPurchase({
       purchaseQuantity: data.amount,
       assetId: desiredAsset,
@@ -69,11 +61,7 @@ export default function AssetPurchaseModal({
 
   return (
     <>
-      <input
-        type="checkbox"
-        id="asset-purchase-modal"
-        className="modal-toggle"
-      />
+      <input type="checkbox" id="asset-purchase-modal" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <label
@@ -84,9 +72,7 @@ export default function AssetPurchaseModal({
           </label>
           <h3 className="mb-4 text-lg font-bold">Comprar ação</h3>
           <form
-            onSubmit={handleSubmit((data) =>
-              handleSubmitPurchase(data as AssetPurchaseFormData),
-            )}
+            onSubmit={handleSubmit((data) => handleSubmitPurchase(data as AssetPurchaseFormData))}
           >
             {asset && <AssetOverview asset={asset} />}
             <div className="py-4">

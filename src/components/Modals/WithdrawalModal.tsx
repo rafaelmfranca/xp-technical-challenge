@@ -27,9 +27,7 @@ export default function WithdrawalModal() {
     },
   });
 
-  const handleSubmitWithdrawal: SubmitHandler<WithdrawalFormData> = async (
-    data,
-  ) => {
+  const handleSubmitWithdrawal: SubmitHandler<WithdrawalFormData> = async (data) => {
     await handleAddWithdrawal({ ...data, type: 'WITHDRAWAL' });
     mutate(`/api/conta/${clientId}`);
     resetField('amount');
@@ -52,9 +50,7 @@ export default function WithdrawalModal() {
           </label>
           <h3 className="text-lg font-bold">Insira o valor da retirada</h3>
           <form
-            onSubmit={handleSubmit((data) =>
-              handleSubmitWithdrawal(data as WithdrawalFormData),
-            )}
+            onSubmit={handleSubmit((data) => handleSubmitWithdrawal(data as WithdrawalFormData))}
           >
             <div className="py-4">
               <Input

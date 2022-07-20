@@ -5,9 +5,7 @@ type AccountHistoryListProps = {
   accountHistory: AccountHistory[];
 };
 
-export default function AccountHistoryList({
-  accountHistory,
-}: AccountHistoryListProps) {
+export default function AccountHistoryList({ accountHistory }: AccountHistoryListProps) {
   return (
     <div className="overflow-x-auto max-w-[500px] mx-auto">
       <table className="table w-full">

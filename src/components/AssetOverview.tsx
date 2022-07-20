@@ -45,9 +45,7 @@ export default function AssetOverview({ asset }: AssetOverviewProps) {
       </div>
       <div className="flex flex-col items-center justify-center font-medium">
         <span className="text-sm">Valor</span>
-        <span className="badge badge-md">
-          {formatCurrency(Number(asset.unitPrice))}
-        </span>
+        <span className="badge badge-md">{formatCurrency(Number(asset.unitPrice))}</span>
       </div>
       <div className="flex flex-col items-center justify-center font-medium">
         <span className="text-sm">Qtde. disponível</span>

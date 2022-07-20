@@ -7,9 +7,7 @@ export default function ThemeSwitcher() {
     <label className="swap swap-rotate">
       <input
         type="checkbox"
-        onChange={() =>
-          theme === 'light' ? setTheme('dark') : setTheme('light')
-        }
+        onChange={() => (theme === 'light' ? setTheme('dark') : setTheme('light'))}
       />
 
       <svg

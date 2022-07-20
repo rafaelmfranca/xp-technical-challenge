@@ -45,9 +45,5 @@ export default function AccountProvider({ children }: AccountProviderProps) {
     handleAddWithdrawal,
   };
 
-  return (
-    <AccountContext.Provider value={contextValue}>
-      {children}
-    </AccountContext.Provider>
-  );
+  return <AccountContext.Provider value={contextValue}>{children}</AccountContext.Provider>;
 }

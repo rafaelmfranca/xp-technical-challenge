@@ -42,18 +42,11 @@ export default function DepositModal() {
       <input type="checkbox" id="deposit-modal" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          <label
-            htmlFor="deposit-modal"
-            className="absolute btn btn-sm btn-circle right-2 top-2"
-          >
+          <label htmlFor="deposit-modal" className="absolute btn btn-sm btn-circle right-2 top-2">
             ✕
           </label>
           <h3 className="text-lg font-bold">Insira o valor do depósito</h3>
-          <form
-            onSubmit={handleSubmit((data) =>
-              handleSubmitDeposit(data as DepositFormData),
-            )}
-          >
+          <form onSubmit={handleSubmit((data) => handleSubmitDeposit(data as DepositFormData))}>
             <div className="py-4">
               <Input
                 {...register('amount')}

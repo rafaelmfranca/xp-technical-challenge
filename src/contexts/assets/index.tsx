@@ -37,10 +37,7 @@ export default function AssetsProvider({ children }: AssetsProviderProps) {
     }
   }, [data]);
 
-  const handleAssetPurchase = async ({
-    assetId,
-    purchaseQuantity,
-  }: AssetPurchasePayload) => {
+  const handleAssetPurchase = async ({ assetId, purchaseQuantity }: AssetPurchasePayload) => {
     await api.post('api/investimentos/comprar', {
       clientId,
       assetId,
@@ -54,9 +51,5 @@ export default function AssetsProvider({ children }: AssetsProviderProps) {
     handleAssetPurchase,
   };
 
-  return (
-    <AssetsContext.Provider value={contextValue}>
-      {children}
-    </AssetsContext.Provider>
-  );
+  return <AssetsContext.Provider value={contextValue}>{children}</AssetsContext.Provider>;
 }

@@ -17,10 +17,7 @@ const customLoader = ({ src }: CustomLoaderProps) => {
   return `https://pro.clear.com.br/src/assets/symbols_icons/${src}`;
 };
 
-export default function AssetsListItem({
-  asset,
-  handleAssetToBuy,
-}: AssetsListItemProps) {
+export default function AssetsListItem({ asset, handleAssetToBuy }: AssetsListItemProps) {
   const { balance } = useAccount();
 
   return (
@@ -57,9 +54,7 @@ export default function AssetsListItem({
         </div>
       </td>
       <td>
-        <span className="font-medium badge badge-ghost badge-md">
-          {asset.amount}
-        </span>
+        <span className="font-medium badge badge-ghost badge-md">{asset.amount}</span>
       </td>
       <td>
         <span className="font-medium badge badge-ghost badge-md">

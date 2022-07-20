@@ -1,6 +1,6 @@
 import useAuth from '@/hooks/useAuth';
 import { api, fetcher } from '@/lib/axios';
-import { Asset, AssetPurchasePayload, AssetsContextData } from '@/types/shared';
+import { Asset, AssetPurchasePayload, AssetSalePayload, AssetsContextData } from '@/types/shared';
 import { ReactNode, useEffect, useState } from 'react';
 import useSWR from 'swr';
 import AssetsContext from './context';
@@ -45,10 +45,19 @@ export default function AssetsProvider({ children }: AssetsProviderProps) {
     });
   };
 
+  const handleAssetSale = async ({ assetId, saleQuantity }: AssetSalePayload) => {
+    await api.post('api/investimentos/vender', {
+      clientId,
+      assetId,
+      saleQuantity,
+    });
+  };
+
   const contextValue: AssetsContextData = {
     availableAssets,
     investments,
     handleAssetPurchase,
+    handleAssetSale,
   };
 
   return <AssetsContext.Provider value={contextValue}>{children}</AssetsContext.Provider>;

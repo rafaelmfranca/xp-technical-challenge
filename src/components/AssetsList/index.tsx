@@ -1,5 +1,5 @@
 import useAssets from '@/hooks/useAssets';
-import { AssetPurchaseModal } from '@components';
+import { AssetPurchaseModal, AssetSaleModal } from '@components';
 import { useState } from 'react';
 import AssetsListItem from './AssetsListItem';
 
@@ -8,13 +8,18 @@ type AssetsListProps = {
 };
 
 export default function AssetsList({ tabIndex }: AssetsListProps) {
-  const [desiredAsset, setDesiredAsset] = useState<string | null>(null);
+  const [desiredAssetPurchase, setDesiredAssetPurchase] = useState<string | null>(null);
+  const [desiredAssetSale, setDesiredAssetSale] = useState<string | null>(null);
   const { availableAssets, investments } = useAssets();
 
   const currentList = tabIndex === 0 ? investments : availableAssets;
 
-  const handleAssetToBuy = (assetId: string) => {
-    setDesiredAsset(assetId);
+  const handleDesiredAssetPurchase = (assetId: string) => {
+    setDesiredAssetPurchase(assetId);
+  };
+
+  const handleDesiredAssetSale = (assetId: string) => {
+    setDesiredAssetSale(assetId);
   };
 
   return (
@@ -33,13 +38,15 @@ export default function AssetsList({ tabIndex }: AssetsListProps) {
               <AssetsListItem
                 asset={asset}
                 key={asset.ticker}
-                handleAssetToBuy={handleAssetToBuy}
+                handleDesiredAssetPurchase={handleDesiredAssetPurchase}
+                handleDesiredAssetSale={handleDesiredAssetSale}
               />
             ))}
           </tbody>
         </table>
       </div>
-      {desiredAsset && <AssetPurchaseModal desiredAsset={desiredAsset} />}
+      {desiredAssetPurchase && <AssetPurchaseModal desiredAsset={desiredAssetPurchase} />}
+      {desiredAssetSale && <AssetSaleModal desiredAsset={desiredAssetSale} />}
     </>
   );
 }

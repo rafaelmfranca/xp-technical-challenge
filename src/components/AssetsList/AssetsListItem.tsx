@@ -1,4 +1,5 @@
 import { formatCurrency } from '@/helpers/formatCurrency';
+import { useAssets } from '@/hooks';
 import useAccount from '@/hooks/useAccount';
 import { Asset } from '@/types/shared';
 import Image from 'next/image';
@@ -6,7 +7,8 @@ import { ArrowDown, ArrowUp } from 'phosphor-react';
 
 type AssetsListItemProps = {
   asset: Asset;
-  handleAssetToBuy: (assetId: string) => void;
+  handleDesiredAssetPurchase: (assetId: string) => void;
+  handleDesiredAssetSale: (assetId: string) => void;
 };
 
 type CustomLoaderProps = {
@@ -17,8 +19,13 @@ const customLoader = ({ src }: CustomLoaderProps) => {
   return `https://pro.clear.com.br/src/assets/symbols_icons/${src}`;
 };
 
-export default function AssetsListItem({ asset, handleAssetToBuy }: AssetsListItemProps) {
+export default function AssetsListItem({
+  asset,
+  handleDesiredAssetPurchase,
+  handleDesiredAssetSale,
+}: AssetsListItemProps) {
   const { balance } = useAccount();
+  const { investments } = useAssets();
 
   return (
     <tr key={asset.ticker}>
@@ -62,15 +69,26 @@ export default function AssetsListItem({ asset, handleAssetToBuy }: AssetsListIt
         </span>
       </td>
       <td className="sm:p-0">
-        <button
-          className="btn btn-success btn-xs"
-          disabled={balance < Number(asset.unitPrice)}
-          onClick={() => handleAssetToBuy(asset.assetId)}
-        >
-          <label htmlFor="asset-purchase-modal" className="cursor-pointer">
-            Compra
-          </label>
-        </button>
+        <div className="flex justify-center gap-1">
+          <button
+            className="btn btn-success btn-xs"
+            disabled={balance < Number(asset.unitPrice)}
+            onClick={() => handleDesiredAssetPurchase(asset.assetId)}
+          >
+            <label htmlFor="asset-purchase-modal" className="cursor-pointer">
+              C
+            </label>
+          </button>
+          <button
+            className="btn btn-error btn-xs"
+            disabled={!investments.some((investment) => investment.assetId === asset.assetId)}
+            onClick={() => handleDesiredAssetSale(asset.assetId)}
+          >
+            <label htmlFor="asset-sale-modal" className="cursor-pointer">
+              V
+            </label>
+          </button>
+        </div>
       </td>
     </tr>
   );

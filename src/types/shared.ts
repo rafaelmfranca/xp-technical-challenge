@@ -40,6 +40,11 @@ export type AssetPurchasePayload = {
   purchaseQuantity: number;
 };
 
+export type AssetSalePayload = {
+  assetId: string;
+  saleQuantity: number;
+};
+
 export type Asset = {
   assetId: string;
   ticker: string;
@@ -52,4 +57,5 @@ export type AssetsContextData = {
   availableAssets: Asset[];
   investments: Asset[];
   handleAssetPurchase: (purchasePayload: AssetPurchasePayload) => Promise<void>;
+  handleAssetSale: (salePayload: AssetSalePayload) => Promise<void>;
 };

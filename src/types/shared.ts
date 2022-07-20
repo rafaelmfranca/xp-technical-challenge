@@ -4,7 +4,8 @@ export type LoginPayload = {
 };
 
 export type AuthContextData = {
-  isAuthenticated: boolean;
+  email: string;
+  clientId: string;
   error: string;
   handleLogin: (payload: LoginPayload) => Promise<void>;
 };
@@ -32,4 +33,23 @@ export type AccountContextData = {
   balance: number;
   handleAddDeposit: (depositPayload: DepositPayload) => Promise<void>;
   handleAddWithdrawal: (withdrawalPayload: WithdrawalPayload) => Promise<void>;
+};
+
+export type AssetPurchasePayload = {
+  assetId: string;
+  purchaseQuantity: number;
+};
+
+export type Asset = {
+  assetId: string;
+  ticker: string;
+  variation: string;
+  amount: number;
+  unitPrice: string;
+};
+
+export type AssetsContextData = {
+  availableAssets: Asset[];
+  investments: Asset[];
+  handleAssetPurchase: (purchasePayload: AssetPurchasePayload) => Promise<void>;
 };

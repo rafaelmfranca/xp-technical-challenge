@@ -1,7 +1,7 @@
-import useSession from '@/hooks/useSession';
+import useAuth from '@/hooks/useAuth';
 
 export default function Avatar() {
-  const { email } = useSession();
+  const { email } = useAuth();
 
   return (
     <div className="avatar online placeholder" role="img" aria-label="Avatar">

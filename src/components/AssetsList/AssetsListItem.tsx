@@ -70,24 +70,28 @@ export default function AssetsListItem({
       </td>
       <td className="sm:p-0">
         <div className="flex justify-center gap-1">
-          <button
-            className="btn btn-success btn-xs"
-            disabled={balance < Number(asset.unitPrice)}
+          <label
+            htmlFor="asset-purchase-modal"
             onClick={() => handleDesiredAssetPurchase(asset.assetId)}
+            className={`btn btn-success btn-xs ${
+              balance < Number(asset.unitPrice) && 'btn-disabled'
+            }`}
+            role="button"
           >
-            <label htmlFor="asset-purchase-modal" className="cursor-pointer">
-              C
-            </label>
-          </button>
-          <button
-            className="btn btn-error btn-xs"
-            disabled={!investments.some((investment) => investment.assetId === asset.assetId)}
+            C
+          </label>
+
+          <label
+            htmlFor="asset-sale-modal"
+            className={`btn btn-error btn-xs ${
+              !investments.some((investment) => investment.assetId === asset.assetId) &&
+              'btn-disabled'
+            }`}
             onClick={() => handleDesiredAssetSale(asset.assetId)}
+            role="button"
           >
-            <label htmlFor="asset-sale-modal" className="cursor-pointer">
-              V
-            </label>
-          </button>
+            V
+          </label>
         </div>
       </td>
     </tr>

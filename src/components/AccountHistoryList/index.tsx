@@ -7,8 +7,8 @@ type AccountHistoryListProps = {
 
 export default function AccountHistoryList({ accountHistory }: AccountHistoryListProps) {
   return (
-    <div className="overflow-x-auto max-w-[500px] mx-auto">
-      <table className="table w-full">
+    <div className="mx-auto overflow-x-auto max-w-prose">
+      <table className="table w-full border border-base-100">
         <thead>
           <tr>
             <th></th>

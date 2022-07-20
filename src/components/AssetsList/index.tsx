@@ -25,7 +25,7 @@ export default function AssetsList({ tabIndex }: AssetsListProps) {
   return (
     <>
       <div className="mx-auto overflow-x-auto max-w-prose">
-        <table className="table w-full">
+        <table className="table w-full border border-base-100">
           <thead>
             <tr>
               <th>Ação</th>

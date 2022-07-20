@@ -13,23 +13,27 @@ export default function Balance({ balance }: BalanceProps) {
 
   return (
     <div className="flex items-center justify-center p-4">
-      <div className="p-2 shadow-md card bg-base-100">
+      <div className="p-2 border border-base-300 card bg-base-100">
         <div className="stat">
           <div className="stat-title">Saldo em conta</div>
           <div className="stat-value">{formatCurrency(balance)}</div>
           <div className="stat-desc">Atualizado em {date}</div>
         </div>
         <div className="flex justify-between p-4">
-          <button className="btn btn-sm btn-success modal-button">
-            <label htmlFor="deposit-modal" className="cursor-pointer">
-              Depósito
-            </label>
-          </button>
-          <button className="btn btn-sm btn-error modal-button" disabled={balance === 0}>
-            <label htmlFor="withdrawal-modal" className="cursor-pointer">
-              Retirada
-            </label>
-          </button>
+          <label
+            htmlFor="deposit-modal"
+            className="btn btn-sm btn-success modal-button"
+            role="button"
+          >
+            Depósito
+          </label>
+          <label
+            htmlFor="withdrawal-modal"
+            className={`btn btn-sm btn-error modal-button ${balance === 0 && 'btn-disabled'}`}
+            role="button"
+          >
+            Retirada
+          </label>
         </div>
       </div>
     </div>

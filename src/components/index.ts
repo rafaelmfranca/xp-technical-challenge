@@ -9,6 +9,7 @@ import Header from './Header';
 import Hero from './Hero';
 import LoginForm from './LoginForm';
 import AssetPurchaseModal from './Modals/AssetPurchaseModal';
+import AssetSaleModal from './Modals/AssetSaleModal';
 import DepositModal from './Modals/DepositModal';
 import WithdrawModal from './Modals/WithdrawalModal';
 import TabSwitcher from './TabSwitcher';
@@ -28,4 +29,5 @@ export {
   TabSwitcher,
   AssetPurchaseModal,
   AssetOverview,
+  AssetSaleModal,
 };

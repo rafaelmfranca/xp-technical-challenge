@@ -1,5 +1,18 @@
-import { Header } from '@components';
+import { AssetsList, Header, TabSwitcher } from '@components';
+import { useState } from 'react';
 
 export default function Ativos() {
-  return <Header />;
+  const [tabIndex, setTabIndex] = useState(0);
+
+  const handleTabChange = (index: number) => {
+    setTabIndex(index);
+  };
+
+  return (
+    <>
+      <Header />
+      <TabSwitcher handleTabChange={handleTabChange} tabIndex={tabIndex} />
+      <AssetsList tabIndex={tabIndex} />
+    </>
+  );
 }

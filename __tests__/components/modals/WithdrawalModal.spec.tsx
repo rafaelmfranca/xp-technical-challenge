@@ -52,23 +52,6 @@ describe('✅ <WithdrawModal />', () => {
       expect(screen.getByRole('button', { name: /confirmar/i })).toBeEnabled();
     });
 
-    it('should show correct message when typing an invalid value', async () => {
-      render(
-        <AccountContext.Provider value={contextValue}>
-          <WithdrawModal />
-        </AccountContext.Provider>,
-      );
-
-      const valueInput = screen.getByRole('spinbutton');
-
-      await userEvent.type(valueInput, '0');
-
-      expect(
-        screen.getByText(/o valor deve ser positivo/i),
-      ).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /confirmar/i })).toBeDisabled();
-    });
-
     it('should show correct message when typing a value greather than balance', async () => {
       render(
         <AccountContext.Provider value={contextValue}>

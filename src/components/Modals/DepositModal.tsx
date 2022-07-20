@@ -17,17 +17,20 @@ export default function DepositModal() {
   const {
     register,
     handleSubmit,
-    reset,
+    resetField,
     formState: { errors, isSubmitting, isValid },
   } = useForm<DepositFormData>({
     mode: 'onChange',
     resolver: yupResolver(depositSchema),
+    defaultValues: {
+      amount: 0,
+    },
   });
 
   const handleSubmitDeposit: SubmitHandler<DepositFormData> = async (data) => {
     await handleAddDeposit({ ...data, type: 'DEPOSIT' });
     mutate(`/api/conta/${clientId}`);
-    reset();
+    resetField('amount');
 
     // i will fix that
     const modal = document.getElementById('deposit-modal') as any;

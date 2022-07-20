@@ -17,11 +17,14 @@ export default function WithdrawalModal() {
   const {
     register,
     handleSubmit,
-    reset,
+    resetField,
     formState: { errors, isSubmitting, isValid },
   } = useForm<WithdrawalFormData>({
     mode: 'onChange',
     resolver: yupResolver(generateWithdrawalSchema(balance)),
+    defaultValues: {
+      amount: 0,
+    },
   });
 
   const handleSubmitWithdrawal: SubmitHandler<WithdrawalFormData> = async (
@@ -29,7 +32,7 @@ export default function WithdrawalModal() {
   ) => {
     await handleAddWithdrawal({ ...data, type: 'WITHDRAWAL' });
     mutate(`/api/conta/${clientId}`);
-    reset();
+    resetField('amount');
 
     // i will fix that
     const modal = document.getElementById('withdrawal-modal') as any;

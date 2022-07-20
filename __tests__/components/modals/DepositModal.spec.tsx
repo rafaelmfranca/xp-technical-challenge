@@ -52,23 +52,6 @@ describe('✅ <DepositModal />', () => {
       expect(screen.getByRole('button', { name: /confirmar/i })).toBeEnabled();
     });
 
-    it('should show correct message when typing an invalid value', async () => {
-      render(
-        <AccountContext.Provider value={contextValue}>
-          <DepositModal />
-        </AccountContext.Provider>,
-      );
-
-      const valueInput = screen.getByRole('spinbutton');
-
-      await userEvent.type(valueInput, '0');
-
-      expect(
-        screen.getByText(/o valor deve ser positivo/i),
-      ).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /confirmar/i })).toBeDisabled();
-    });
-
     it('should submit the form correctly', async () => {
       render(
         <AccountContext.Provider value={contextValue}>

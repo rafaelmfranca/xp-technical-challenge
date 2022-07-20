@@ -7,7 +7,7 @@ const tabSwitcherProps = (activeTab: number) => ({
   handleTabChange: () => jest.fn(),
 });
 
-describe('✅ <Balance />', () => {
+describe('✅ <TabSwitcher />', () => {
   describe('➡️ Render', () => {
     it('should render correctly', () => {
       render(<TabSwitcher {...tabSwitcherProps(1)} />);

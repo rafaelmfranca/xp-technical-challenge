@@ -18,7 +18,8 @@ export default async function handler(req: Req, res: Res) {
   WHERE
     cl.client_id = ${clientId}
   GROUP BY
-    aa.asset_id;
+    aa.asset_id
+  HAVING sum(tr.amount) > 0;
   `;
 
   const investments = JSON.parse(toJson(rawInvestments));

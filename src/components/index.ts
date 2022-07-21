@@ -12,6 +12,7 @@ import AssetPurchaseModal from './Modals/AssetPurchaseModal';
 import AssetSaleModal from './Modals/AssetSaleModal';
 import DepositModal from './Modals/DepositModal';
 import WithdrawModal from './Modals/WithdrawalModal';
+import OrderPreview from './OrderPreview';
 import TabSwitcher from './TabSwitcher';
 
 export {
@@ -30,4 +31,5 @@ export {
   AssetPurchaseModal,
   AssetOverview,
   AssetSaleModal,
+  OrderPreview,
 };

@@ -2,7 +2,7 @@ import { useAccount, useAssets, useAuth } from '@/hooks';
 import { api } from '@/lib/axios';
 import generateAssetPurchaseSchema from '@/schemas/purchaseAsset';
 import { Asset } from '@/types/shared';
-import { AssetOverview, Input } from '@components';
+import { AssetOverview, Input, OrderPreview } from '@components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -26,6 +26,7 @@ export default function AssetPurchaseModal({ desiredAsset }: AssetPurchaseModalP
     register,
     handleSubmit,
     resetField,
+    watch,
     formState: { errors, isSubmitting, isValid },
   } = useForm<AssetPurchaseFormData>({
     mode: 'onChange',
@@ -85,13 +86,18 @@ export default function AssetPurchaseModal({ desiredAsset }: AssetPurchaseModalP
                 error={errors.amount}
               />
             </div>
+            <OrderPreview
+              isValid={isValid}
+              unitPrice={Number(asset?.unitPrice)}
+              amount={watch('amount')}
+            />
             <div className="mt-0 modal-action">
               <button
                 type="submit"
-                className={`btn btn-primary ${isSubmitting && 'loading'}`}
+                className={`btn btn-primary w-full ${isSubmitting && 'loading'}`}
                 disabled={!isValid}
               >
-                Confirmar
+                Comprar
                 <label htmlFor="asset-purchase-modal" />
               </button>
             </div>

@@ -1,12 +1,12 @@
 import { useAssets, useAuth } from '@/hooks';
 import generateAssetSaleSchema from '@/schemas/assetSale';
 import { Asset } from '@/types/shared';
+import { Input, OrderPreview } from '@components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSWRConfig } from 'swr';
 import AssetOverview from '../AssetOverview';
-import Input from '../Form/Input';
 
 type AssetSaleFormData = {
   amount: number;
@@ -25,6 +25,7 @@ export default function AssetSaleModal({ desiredAsset }: AssetSaleModalProps) {
     register,
     handleSubmit,
     resetField,
+    watch,
     formState: { errors, isSubmitting, isValid },
   } = useForm<AssetSaleFormData>({
     mode: 'onChange',
@@ -77,13 +78,18 @@ export default function AssetSaleModal({ desiredAsset }: AssetSaleModalProps) {
                 error={errors.amount}
               />
             </div>
+            <OrderPreview
+              isValid={isValid}
+              unitPrice={Number(asset?.unitPrice)}
+              amount={watch('amount')}
+            />
             <div className="mt-0 modal-action">
               <button
                 type="submit"
-                className={`btn btn-primary ${isSubmitting && 'loading'}`}
+                className={`btn btn-primary w-full ${isSubmitting && 'loading'}`}
                 disabled={!isValid}
               >
-                Confirmar
+                Vender
                 <label htmlFor="asset-sale-modal" />
               </button>
             </div>

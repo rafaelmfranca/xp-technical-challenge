@@ -20,7 +20,7 @@ export default function AssetPurchaseModal({ desiredAsset }: AssetPurchaseModalP
   const { clientId } = useAuth();
   const { mutate } = useSWRConfig();
   const { balance } = useAccount();
-  const { handleAssetPurchase } = useAssets();
+  const { handleAssetPurchase, availableAssets } = useAssets();
   const [asset, setAsset] = useState<Asset | null>(null);
   const {
     register,
@@ -42,7 +42,7 @@ export default function AssetPurchaseModal({ desiredAsset }: AssetPurchaseModalP
       const { data } = await api.get(`api/ativos/${desiredAsset}`);
       setAsset(data);
     })();
-  }, [desiredAsset]);
+  }, [desiredAsset, availableAssets]);
 
   const handleSubmitPurchase: SubmitHandler<AssetPurchaseFormData> = async (data) => {
     await handleAssetPurchase({

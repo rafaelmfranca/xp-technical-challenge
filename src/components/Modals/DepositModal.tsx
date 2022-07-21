@@ -60,10 +60,10 @@ export default function DepositModal() {
             <div className="mt-0 modal-action">
               <button
                 type="submit"
-                className={`btn btn-primary ${isSubmitting && 'loading'}`}
+                className={`btn btn-primary w-full ${isSubmitting && 'loading'}`}
                 disabled={!isValid}
               >
-                Confirmar
+                Solicitar depósito
                 <label htmlFor="deposit-modal" />
               </button>
             </div>

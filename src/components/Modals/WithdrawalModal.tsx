@@ -65,12 +65,12 @@ export default function WithdrawalModal() {
             <div className="mt-0 modal-action">
               <button
                 type="submit"
-                className={`btn btn-primary ${isSubmitting && 'loading'}`}
+                className={`btn btn-primary w-full ${isSubmitting && 'loading'}`}
                 disabled={!isValid}
               >
-                Confirmar
+                Solicitar retirada
+                <label htmlFor="withdrawal-modal" />
               </button>
-              <label htmlFor="withdrawal-modal cursor-pointer" />
             </div>
           </form>
         </div>

@@ -23,12 +23,8 @@ describe('✅ <Home />', () => {
       expect(router.asPath).toBe('/ativos');
       expect(screen.queryByText(/r\$ 510,00/i)).toBeInTheDocument();
       expect(screen.getByText(/saldo em conta/i)).toBeInTheDocument();
-      expect(
-        screen.getByRole('button', { name: /depósito/i }),
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole('button', { name: /retirada/i }),
-      ).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Depósito' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Retirada' })).toBeInTheDocument();
       expect(screen.getByRole('table')).toBeInTheDocument();
     });
   });

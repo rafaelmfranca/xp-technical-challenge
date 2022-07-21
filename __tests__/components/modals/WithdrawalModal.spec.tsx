@@ -21,9 +21,7 @@ describe('✅ <WithdrawModal />', () => {
 
       expect(screen.getByText('Valor')).toBeInTheDocument();
       expect(screen.getByRole('spinbutton')).toBeInTheDocument();
-      expect(
-        screen.getByRole('button', { name: /confirmar/i }),
-      ).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /solicitar retirada/i })).toBeInTheDocument();
     });
   });
 
@@ -35,7 +33,7 @@ describe('✅ <WithdrawModal />', () => {
         </AccountContext.Provider>,
       );
 
-      expect(screen.getByRole('button', { name: /confirmar/i })).toBeDisabled();
+      expect(screen.getByRole('button', { name: /solicitar retirada/i })).toBeDisabled();
     });
 
     it('submit button should be enabled when typing a value greather than 0', async () => {
@@ -49,7 +47,7 @@ describe('✅ <WithdrawModal />', () => {
 
       await userEvent.type(valueInput, '1');
 
-      expect(screen.getByRole('button', { name: /confirmar/i })).toBeEnabled();
+      expect(screen.getByRole('button', { name: /solicitar retirada/i })).toBeEnabled();
     });
 
     it('should show correct message when typing a value greather than balance', async () => {
@@ -63,10 +61,8 @@ describe('✅ <WithdrawModal />', () => {
 
       await userEvent.type(valueInput, '511');
 
-      expect(
-        screen.getByText(/o valor deve ser menor que o saldo atual/i),
-      ).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /confirmar/i })).toBeDisabled();
+      expect(screen.getByText(/o valor deve ser menor que o saldo atual/i)).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /solicitar retirada/i })).toBeDisabled();
     });
 
     it('should submit the form correctly', async () => {
@@ -77,7 +73,7 @@ describe('✅ <WithdrawModal />', () => {
       );
 
       const valueInput = screen.getByRole('spinbutton');
-      const submitButton = screen.getByRole('button', { name: /confirmar/i });
+      const submitButton = screen.getByRole('button', { name: /solicitar retirada/i });
 
       await userEvent.type(valueInput, '1');
       await userEvent.click(submitButton);

@@ -25,7 +25,9 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         name={name}
         type={type}
         placeholder={placeholder}
-        className={`input input-bordered ${error && 'input-error'}`}
+        className={`input input-bordered ${type === 'number' && 'text-center text-lg'} ${
+          error && 'input-error'
+        }`}
         ref={ref}
         autoComplete={autoComplete}
         {...rest}

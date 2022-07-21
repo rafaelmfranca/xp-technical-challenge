@@ -39,7 +39,7 @@ export default function AssetSaleModal({ desiredAsset }: AssetSaleModalProps) {
     const assetToSale = investments.find(({ assetId }) => assetId === desiredAsset) as Asset;
     setAsset(assetToSale);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [desiredAsset]);
+  }, [desiredAsset, investments]);
 
   const handleSubmitSale: SubmitHandler<AssetSaleFormData> = async (data) => {
     await handleAssetSale({ saleQuantity: data.amount, assetId: desiredAsset });

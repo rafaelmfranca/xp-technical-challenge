@@ -13,10 +13,10 @@ export default function Balance({ balance }: BalanceProps) {
 
   return (
     <div className="flex items-center justify-center p-4">
-      <div className="p-2 border border-base-300 card bg-base-100">
+      <div className="p-2 border border-base-300 card bg-base-100 min-w-[265px]">
         <div className="stat">
           <div className="stat-title">Saldo em conta</div>
-          <div className="stat-value">{formatCurrency(balance)}</div>
+          <div className="text-3xl stat-value">{formatCurrency(balance)}</div>
           <div className="stat-desc">Atualizado em {date}</div>
         </div>
         <div className="flex justify-between p-4">

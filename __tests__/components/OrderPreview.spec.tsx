@@ -3,7 +3,7 @@ import { OrderPreview } from '@components';
 import { render, screen } from '@testing-library/react';
 import accountContextValue from '__mocks__/accountContext';
 
-describe('✅ <AssetOverview />', () => {
+describe('✅ <OrderPreview />', () => {
   describe('➡️ Render', () => {
     it('should render correctly', () => {
       render(

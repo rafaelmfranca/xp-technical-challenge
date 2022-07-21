@@ -25,7 +25,7 @@ export default function AssetsListItem({
   handleDesiredAssetSale,
 }: AssetsListItemProps) {
   const { balance } = useAccount();
-  const { investments } = useAssets();
+  const { investments, availableAssets } = useAssets();
 
   return (
     <tr key={asset.ticker}>
@@ -74,7 +74,8 @@ export default function AssetsListItem({
             htmlFor="asset-purchase-modal"
             onClick={() => handleDesiredAssetPurchase(asset.assetId)}
             className={`btn btn-success btn-xs ${
-              balance < Number(asset.unitPrice) && 'btn-disabled'
+              balance < Number(asset.unitPrice) ||
+              (!availableAssets.some(({ assetId }) => assetId === asset.assetId) && 'btn-disabled')
             }`}
             role="button"
           >
@@ -84,8 +85,7 @@ export default function AssetsListItem({
           <label
             htmlFor="asset-sale-modal"
             className={`btn btn-error btn-xs ${
-              !investments.some((investment) => investment.assetId === asset.assetId) &&
-              'btn-disabled'
+              !investments.some(({ assetId }) => assetId === asset.assetId) && 'btn-disabled'
             }`}
             onClick={() => handleDesiredAssetSale(asset.assetId)}
             role="button"

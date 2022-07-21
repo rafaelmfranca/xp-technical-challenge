@@ -40,9 +40,11 @@ export default function AssetPurchaseModal({ desiredAsset }: AssetPurchaseModalP
 
   useEffect(() => {
     (async () => {
+      resetField('amount');
       const { data } = await api.get(`api/ativos/${desiredAsset}`);
       setAsset(data);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [desiredAsset, availableAssets]);
 
   const handleSubmitPurchase: SubmitHandler<AssetPurchaseFormData> = async (data) => {

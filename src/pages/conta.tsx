@@ -1,15 +1,33 @@
 import AccountProvider from '@/contexts/account';
 import useAccount from '@/hooks/useAccount';
-import { AccountHistoryList, Balance, DepositModal, Header, WithdrawModal } from '@components';
+import {
+  AccountHistoryList,
+  Balance,
+  DepositModal,
+  FilterSwitcher,
+  Header,
+  WithdrawModal,
+} from '@components';
+import { useState } from 'react';
 
 export default function Conta() {
+  const [tabIndex, setTabIndex] = useState(0);
   const { accountHistory, balance } = useAccount();
+
+  const handleTabChange = (index: number) => {
+    setTabIndex(index);
+  };
 
   return (
     <AccountProvider>
       <Header />
       <Balance balance={balance} />
-      {accountHistory.length > 0 && <AccountHistoryList accountHistory={accountHistory} />}
+      {accountHistory.length > 0 && (
+        <>
+          <FilterSwitcher tabIndex={tabIndex} handleTabChange={handleTabChange} />
+          <AccountHistoryList accountHistory={accountHistory} tabIndex={tabIndex} />
+        </>
+      )}
       <DepositModal />
       <WithdrawModal />
     </AccountProvider>

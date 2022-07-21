@@ -12,14 +12,10 @@ describe('✅ <AssetPurchaseModal />', () => {
         </AccountContext.Provider>,
       );
 
-      expect(
-        screen.getByRole('heading', { name: /comprar ação/i }),
-      ).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: /comprar ação/i })).toBeInTheDocument();
       expect(screen.getByText(/quantidade/i)).toBeInTheDocument();
       expect(screen.getByRole('spinbutton')).toBeInTheDocument();
-      expect(
-        screen.getByRole('button', { name: /confirmar/i }),
-      ).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /comprar/i })).toBeInTheDocument();
     });
   });
 });

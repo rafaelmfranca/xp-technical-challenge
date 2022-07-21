@@ -1,14 +1,16 @@
+import AccountContext from '@/contexts/account/context';
 import AssetsContext from '@/contexts/assets/context';
 import { AssetsList } from '@components';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import contextValue from '__mocks__/assetsContext';
+import accountContextValue from '__mocks__/accountContext';
+import assetsContextValue from '__mocks__/assetsContext';
 
 describe('✅ <AssetsList />', () => {
   describe('➡️ Render', () => {
     it('should render correctly in first tab', () => {
       render(
-        <AssetsContext.Provider value={contextValue}>
+        <AssetsContext.Provider value={assetsContextValue}>
           <AssetsList tabIndex={0} />
         </AssetsContext.Provider>,
       );
@@ -22,7 +24,7 @@ describe('✅ <AssetsList />', () => {
 
     it('should render correctly in second tab', () => {
       render(
-        <AssetsContext.Provider value={contextValue}>
+        <AssetsContext.Provider value={assetsContextValue}>
           <AssetsList tabIndex={1} />
         </AssetsContext.Provider>,
       );
@@ -38,9 +40,11 @@ describe('✅ <AssetsList />', () => {
   describe('➡️ Behavior', () => {
     it('should open an asset purchase modal when clicking on buy asset button', async () => {
       render(
-        <AssetsContext.Provider value={contextValue}>
-          <AssetsList tabIndex={1} />
-        </AssetsContext.Provider>,
+        <AccountContext.Provider value={accountContextValue}>
+          <AssetsContext.Provider value={assetsContextValue}>
+            <AssetsList tabIndex={1} />
+          </AssetsContext.Provider>
+        </AccountContext.Provider>,
       );
 
       const firstAssetRow = screen.getAllByRole('row')[1];

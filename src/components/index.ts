@@ -3,6 +3,7 @@ import AssetOverview from './AssetOverview';
 import AssetsList from './AssetsList';
 import Balance from './Balance';
 import ErrorToast from './ErrorToast';
+import FilterSwitcher from './FilterSwitcher';
 import Button from './Form/Button';
 import Input from './Form/Input';
 import Header from './Header';
@@ -32,4 +33,5 @@ export {
   AssetOverview,
   AssetSaleModal,
   OrderPreview,
+  FilterSwitcher,
 };

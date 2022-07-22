@@ -1,7 +1,5 @@
+import { Avatar, NavMenu, ThemeSwitcher } from '@components';
 import { List } from 'phosphor-react';
-import Avatar from './Avatar';
-import NavMenu from './NavMenu';
-import ThemeSwitcher from './ThemeSwitcher';
 
 export default function NavBar() {
   return (

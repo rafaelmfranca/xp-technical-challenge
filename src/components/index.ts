@@ -7,6 +7,9 @@ import FilterSwitcher from './FilterSwitcher';
 import Button from './Form/Button';
 import Input from './Form/Input';
 import Header from './Header';
+import Avatar from './Header/Avatar';
+import NavMenu from './Header/NavMenu';
+import ThemeSwitcher from './Header/ThemeSwitcher';
 import Hero from './Hero';
 import LoginForm from './LoginForm';
 import AssetPurchaseModal from './Modals/AssetPurchaseModal';
@@ -34,4 +37,7 @@ export {
   AssetSaleModal,
   OrderPreview,
   FilterSwitcher,
+  Avatar,
+  ThemeSwitcher,
+  NavMenu,
 };

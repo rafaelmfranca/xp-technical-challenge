@@ -12,7 +12,7 @@ export default function Ativos() {
     <>
       <Header />
       <TabSwitcher handleTabChange={handleTabChange} tabIndex={tabIndex} />
-      <AssetsList tabIndex={tabIndex} />
+      <AssetsList handleTabChange={handleTabChange} tabIndex={tabIndex} />
     </>
   );
 }

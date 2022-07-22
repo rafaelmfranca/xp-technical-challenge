@@ -1,13 +1,14 @@
 import useAssets from '@/hooks/useAssets';
-import { AssetPurchaseModal, AssetSaleModal } from '@components';
+import { AssetPurchaseModal, AssetSaleModal, EmptyList } from '@components';
 import { useState } from 'react';
 import AssetsListItem from './AssetsListItem';
 
 type AssetsListProps = {
   tabIndex: number;
+  handleTabChange: (index: number) => void;
 };
 
-export default function AssetsList({ tabIndex }: AssetsListProps) {
+export default function AssetsList({ tabIndex, handleTabChange }: AssetsListProps) {
   const [desiredAssetPurchase, setDesiredAssetPurchase] = useState<string | null>(null);
   const [desiredAssetSale, setDesiredAssetSale] = useState<string | null>(null);
   const { availableAssets, investments } = useAssets();
@@ -21,6 +22,15 @@ export default function AssetsList({ tabIndex }: AssetsListProps) {
   const handleDesiredAssetSale = (assetId: string) => {
     setDesiredAssetSale(assetId);
   };
+
+  if (tabIndex === 0 && !investments.length) {
+    return (
+      <EmptyList
+        handleTabChange={handleTabChange}
+        message="Você ainda não possui nenhum ativo em sua carteira."
+      />
+    );
+  }
 
   return (
     <>

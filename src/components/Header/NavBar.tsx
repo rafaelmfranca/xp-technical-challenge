@@ -1,4 +1,4 @@
-import { Avatar, NavMenu, ThemeSwitcher } from '@components';
+import { Avatar, NavMenu, ProfileMenu, ThemeSwitcher } from '@components';
 import { List } from 'phosphor-react';
 
 export default function NavBar() {
@@ -21,9 +21,12 @@ export default function NavBar() {
         <button className="btn btn-ghost btn-circle">
           <ThemeSwitcher />
         </button>
-        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-          <Avatar />
-        </label>
+        <div className="dropdown dropdown-end">
+          <label tabIndex={1} className="btn btn-ghost btn-circle avatar">
+            <Avatar />
+          </label>
+          <ProfileMenu />
+        </div>
       </div>
     </div>
   );

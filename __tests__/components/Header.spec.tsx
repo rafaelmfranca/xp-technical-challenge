@@ -18,7 +18,7 @@ describe('✅ <Header />', () => {
       );
 
       expect(screen.getByRole('banner')).toBeInTheDocument();
-      expect(screen.getByRole('list')).toBeInTheDocument();
+      expect(screen.getAllByRole('list')).toHaveLength(2);
       expect(screen.getByRole('button')).toBeInTheDocument();
       expect(screen.getByRole('img', { name: /avatar/i })).toBeInTheDocument();
     });
@@ -32,9 +32,10 @@ describe('✅ <Header />', () => {
 
       const listItems = screen.getAllByRole('listitem');
 
-      expect(listItems).toHaveLength(2);
+      expect(listItems).toHaveLength(3);
       expect(listItems[0]).toHaveTextContent('Ativos');
       expect(listItems[1]).toHaveTextContent('Conta');
+      expect(listItems[2]).toHaveTextContent('Sair');
     });
 
     it('should render links correctly', () => {

@@ -8,6 +8,7 @@ export type AuthContextData = {
   clientId: string;
   error: string;
   handleLogin: (payload: LoginPayload) => Promise<void>;
+  handleLogout: () => void;
 };
 
 export type AccountHistory = {

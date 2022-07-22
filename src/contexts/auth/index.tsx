@@ -38,11 +38,19 @@ export default function AuthProvider({ children }: AuthProviderProps) {
     router.push('/ativos');
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('session');
+    setClientId('');
+    setEmail('');
+    router.push('/');
+  };
+
   const contextValue: AuthContextData = {
     clientId,
     email,
     error,
     handleLogin,
+    handleLogout,
   };
 
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;

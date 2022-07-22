@@ -2,6 +2,7 @@ import AccountHistoryList from './AccountHistoryList';
 import AssetOverview from './AssetOverview';
 import AssetsList from './AssetsList';
 import Balance from './Balance';
+import EmptyList from './EmptyList';
 import ErrorToast from './ErrorToast';
 import FilterSwitcher from './FilterSwitcher';
 import Button from './Form/Button';
@@ -42,4 +43,5 @@ export {
   ThemeSwitcher,
   NavMenu,
   ProfileMenu,
+  EmptyList,
 };

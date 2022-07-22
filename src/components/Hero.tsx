@@ -7,15 +7,22 @@ export default function Hero() {
         <div className="flex-col md:gap-10 hero-content lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-3xl font-bold">Acesse sua conta!</h1>
-            <p className="py-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci soluta veniam
-              blanditiis architecto, distinctio ratione excepturi dolores officia fuga aliquam at.
-            </p>
+            <div className="max-w-[310px] mt-6 mockup-code bg-base-100 border border-base-300 text-base-content">
+              <pre data-prefix=">" className="text-primary">
+                <code className="text-sm">Contas com acesso:</code>
+              </pre>
+              <pre data-prefix="1">
+                <code className="text-xs">cliente@xp.inc, 12345678 </code>
+              </pre>
+              <pre data-prefix="2">
+                <code className="text-xs">cliente@clear.br, 12345678 </code>
+              </pre>
+            </div>
           </div>
 
           <div className="divider divider-horizontal" />
 
-          <div className="flex-shrink-0 w-full max-w-sm shadow-md card bg-base-100">
+          <div className="flex-shrink-0 w-full max-w-sm border border-base-300 card bg-base-100">
             <div className="card-body">
               <LoginForm />
             </div>

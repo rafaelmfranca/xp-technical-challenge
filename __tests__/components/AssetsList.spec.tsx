@@ -11,12 +11,12 @@ describe('✅ <AssetsList />', () => {
     it('should render correctly in first tab', () => {
       render(
         <AssetsContext.Provider value={assetsContextValue}>
-          <AssetsList tabIndex={0} />
+          <AssetsList tabIndex={0} handleTabChange={jest.fn()} />
         </AssetsContext.Provider>,
       );
 
       expect(screen.getByRole('table')).toBeInTheDocument();
-      expect(screen.getByRole('columnheader', { name: /ação/i }));
+      expect(screen.getByRole('columnheader', { name: /ativo/i }));
       expect(screen.getByRole('columnheader', { name: /qtde/i })).toBeInTheDocument();
       expect(screen.getByRole('columnheader', { name: /valor/i })).toBeInTheDocument();
       expect(screen.getAllByRole('row')).toHaveLength(3);
@@ -25,12 +25,12 @@ describe('✅ <AssetsList />', () => {
     it('should render correctly in second tab', () => {
       render(
         <AssetsContext.Provider value={assetsContextValue}>
-          <AssetsList tabIndex={1} />
+          <AssetsList tabIndex={1} handleTabChange={jest.fn()} />
         </AssetsContext.Provider>,
       );
 
       expect(screen.getByRole('table')).toBeInTheDocument();
-      expect(screen.getByRole('columnheader', { name: /ação/i }));
+      expect(screen.getByRole('columnheader', { name: /ativo/i }));
       expect(screen.getByRole('columnheader', { name: /qtde/i })).toBeInTheDocument();
       expect(screen.getByRole('columnheader', { name: /valor/i })).toBeInTheDocument();
       expect(screen.getAllByRole('row')).toHaveLength(10);
@@ -42,7 +42,7 @@ describe('✅ <AssetsList />', () => {
       render(
         <AccountContext.Provider value={accountContextValue}>
           <AssetsContext.Provider value={assetsContextValue}>
-            <AssetsList tabIndex={1} />
+            <AssetsList tabIndex={1} handleTabChange={jest.fn()} />
           </AssetsContext.Provider>
         </AccountContext.Provider>,
       );

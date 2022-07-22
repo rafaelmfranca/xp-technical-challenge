@@ -1,7 +1,12 @@
 import useAssets from '@/hooks/useAssets';
-import { AssetPurchaseModal, AssetSaleModal, EmptyList } from '@components';
+import {
+  AssetPurchaseModal,
+  AssetSaleModal,
+  AssetsListItem,
+  AssetsSearchInput,
+  EmptyList,
+} from '@components';
 import { useState } from 'react';
-import AssetsListItem from './AssetsListItem';
 
 type AssetsListProps = {
   tabIndex: number;
@@ -11,9 +16,18 @@ type AssetsListProps = {
 export default function AssetsList({ tabIndex, handleTabChange }: AssetsListProps) {
   const [desiredAssetPurchase, setDesiredAssetPurchase] = useState<string | null>(null);
   const [desiredAssetSale, setDesiredAssetSale] = useState<string | null>(null);
+  const [assetSearch, setAssetSearch] = useState('');
   const { availableAssets, investments } = useAssets();
 
-  const currentList = tabIndex === 0 ? investments : availableAssets;
+  let currentList = tabIndex === 0 ? investments : availableAssets;
+
+  currentList = currentList.filter(({ ticker }) =>
+    ticker.toLowerCase().includes(assetSearch.toLowerCase()),
+  );
+
+  const handleAssetSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAssetSearch(e.target.value);
+  };
 
   const handleDesiredAssetPurchase = (assetId: string) => {
     setDesiredAssetPurchase(assetId);
@@ -34,27 +48,38 @@ export default function AssetsList({ tabIndex, handleTabChange }: AssetsListProp
 
   return (
     <>
-      <div className="mx-auto overflow-x-auto max-w-prose">
-        <table className="table w-full border border-base-100">
-          <thead>
-            <tr>
-              <th>Ação</th>
-              <th>Qtde</th>
-              <th>Valor</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentList.map((asset) => (
-              <AssetsListItem
-                asset={asset}
-                key={asset.ticker}
-                handleDesiredAssetPurchase={handleDesiredAssetPurchase}
-                handleDesiredAssetSale={handleDesiredAssetSale}
-              />
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <AssetsSearchInput
+        assetSearch={assetSearch}
+        handleAssetSearchChange={handleAssetSearchChange}
+      />
+      {!currentList.length ? (
+        <EmptyList
+          message="Não encontramos nenhum ativo."
+          subMessage="Por favor, verifique o termo buscado."
+        />
+      ) : (
+        <div className="mx-auto overflow-x-auto max-w-prose">
+          <table className="table w-full border border-base-100">
+            <thead>
+              <tr>
+                <th>Ativo</th>
+                <th>Qtde</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentList.map((asset) => (
+                <AssetsListItem
+                  asset={asset}
+                  key={asset.ticker}
+                  handleDesiredAssetPurchase={handleDesiredAssetPurchase}
+                  handleDesiredAssetSale={handleDesiredAssetSale}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
       {desiredAssetPurchase && <AssetPurchaseModal desiredAsset={desiredAssetPurchase} />}
       {desiredAssetSale && <AssetSaleModal desiredAsset={desiredAssetSale} />}
     </>

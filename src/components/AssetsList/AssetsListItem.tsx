@@ -74,9 +74,11 @@ export default function AssetsListItem({
             htmlFor="asset-purchase-modal"
             onClick={() => handleDesiredAssetPurchase(asset.assetId)}
             className={`btn btn-success btn-xs ${
-              balance < Number(asset.unitPrice) ||
-              (!availableAssets.some(({ assetId }) => assetId === asset.assetId) && 'btn-disabled')
-            }`}
+              balance < Number(asset.unitPrice) && 'btn-disabled'
+            }
+              ${
+                !availableAssets.some(({ assetId }) => assetId === asset.assetId) && 'btn-disabled'
+              }`}
             role="button"
           >
             C

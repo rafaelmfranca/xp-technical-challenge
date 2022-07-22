@@ -2,16 +2,21 @@ import { ArrowRight, WarningCircle } from 'phosphor-react';
 
 type EmptyListProps = {
   message: string;
+  subMessage?: string;
   handleTabChange?: (index: number) => void;
 };
 
-export default function EmptyList({ message, handleTabChange }: EmptyListProps) {
+export default function EmptyList({ message, handleTabChange, subMessage }: EmptyListProps) {
   return (
     <div className="flex flex-col items-center justify-center flex-auto gap-4 mt-32">
       <div className="p-2 rounded-full bg-base-300">
         <WarningCircle size={32} role="img" aria-label="Atenção" />
       </div>
-      <p className="p-2 font-medium text-center">{message}</p>
+      <p className="p-2 font-medium text-center">
+        {message}
+        <span className="block text-sm font-normal opacity-80">{subMessage}</span>
+      </p>
+
       {handleTabChange && (
         <button
           className="gap-2 btn btn-outline btn-primary btn-sm"

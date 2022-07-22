@@ -20,6 +20,18 @@ describe('✅ <EmptyList />', () => {
         screen.getByRole('button', { name: /veja as opções de ativos!/i }),
       ).toBeInTheDocument();
     });
+
+    it('should render another message when "subMessage" prop is passed', () => {
+      render(
+        <EmptyList
+          message="Some message"
+          handleTabChange={handleTabChange}
+          subMessage="Another message"
+        />,
+      );
+
+      expect(screen.getByText(/another message/i)).toBeInTheDocument();
+    });
   });
 
   describe('➡️ Behavior', () => {

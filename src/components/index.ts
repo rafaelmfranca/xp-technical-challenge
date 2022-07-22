@@ -1,6 +1,8 @@
 import AccountHistoryList from './AccountHistoryList';
 import AssetOverview from './AssetOverview';
 import AssetsList from './AssetsList';
+import AssetsListItem from './AssetsList/AssetsListItem';
+import AssetsSearchInput from './AssetsList/AssetsSearchInput';
 import Balance from './Balance';
 import EmptyList from './EmptyList';
 import ErrorToast from './ErrorToast';
@@ -44,4 +46,6 @@ export {
   NavMenu,
   ProfileMenu,
   EmptyList,
+  AssetsSearchInput,
+  AssetsListItem,
 };

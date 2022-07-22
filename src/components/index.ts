@@ -9,6 +9,7 @@ import Input from './Form/Input';
 import Header from './Header';
 import Avatar from './Header/Avatar';
 import NavMenu from './Header/NavMenu';
+import ProfileMenu from './Header/ProfileMenu';
 import ThemeSwitcher from './Header/ThemeSwitcher';
 import Hero from './Hero';
 import LoginForm from './LoginForm';
@@ -40,4 +41,5 @@ export {
   Avatar,
   ThemeSwitcher,
   NavMenu,
+  ProfileMenu,
 };

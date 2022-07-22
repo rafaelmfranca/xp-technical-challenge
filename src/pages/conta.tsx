@@ -4,6 +4,7 @@ import {
   AccountHistoryList,
   Balance,
   DepositModal,
+  EmptyList,
   FilterSwitcher,
   Header,
   WithdrawModal,
@@ -22,11 +23,13 @@ export default function Conta() {
     <AccountProvider>
       <Header />
       <Balance balance={balance} />
-      {accountHistory.length > 0 && (
+      {accountHistory.length > 0 ? (
         <>
           <FilterSwitcher tabIndex={tabIndex} handleTabChange={handleTabChange} />
           <AccountHistoryList accountHistory={accountHistory} tabIndex={tabIndex} />
         </>
+      ) : (
+        <EmptyList message="Você ainda não efetuou nenhuma transação." />
       )}
       <DepositModal />
       <WithdrawModal />

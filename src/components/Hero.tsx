@@ -15,7 +15,7 @@ export default function Hero() {
                 <code className="text-xs">cliente@xp.inc, 12345678 </code>
               </pre>
               <pre data-prefix="2">
-                <code className="text-xs">cliente@clear.br, 12345678 </code>
+                <code className="text-xs">cliente@clear.com, 12345678 </code>
               </pre>
             </div>
           </div>

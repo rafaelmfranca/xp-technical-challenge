@@ -13,8 +13,10 @@ export default function NavBar() {
         </div>
       </div>
 
-      <div className="navbar-center">
-        <strong className="text-2xl">XP.Inc</strong>
+      <div className="gap-2 navbar-center">
+        <strong className="text-2xl">
+          XP Inc<span className="text-2xl text-primary">.</span>
+        </strong>
       </div>
 
       <div className="navbar-end">

@@ -1,12 +1,12 @@
 import { AssetsList, Header, TabSwitcher } from '@components';
 import { useRouter } from 'next/router';
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Ativos() {
   const [tabIndex, setTabIndex] = useState(0);
   const router = useRouter();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!localStorage.getItem('session')) {
       router.push('/');
     }

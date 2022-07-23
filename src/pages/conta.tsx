@@ -10,14 +10,14 @@ import {
   WithdrawModal,
 } from '@components';
 import { useRouter } from 'next/router';
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Conta() {
   const [tabIndex, setTabIndex] = useState(0);
   const { accountHistory, balance } = useAccount();
   const router = useRouter();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!localStorage.getItem('session')) {
       router.push('/');
     }

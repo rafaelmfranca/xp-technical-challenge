@@ -1,4 +1,5 @@
 import { Avatar, NavMenu, ProfileMenu, ThemeSwitcher } from '@components';
+import Link from 'next/link';
 import { List } from 'phosphor-react';
 
 export default function NavBar() {
@@ -14,9 +15,11 @@ export default function NavBar() {
       </div>
 
       <div className="gap-2 navbar-center">
-        <strong className="text-2xl">
-          XP Inc<span className="text-2xl text-primary">.</span>
-        </strong>
+        <Link href="/ativos">
+          <strong className="text-2xl cursor-pointer">
+            XP Inc<span className="text-2xl text-primary">.</span>
+          </strong>
+        </Link>
       </div>
 
       <div className="navbar-end">

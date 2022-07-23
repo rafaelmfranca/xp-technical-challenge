@@ -9,11 +9,19 @@ import {
   Header,
   WithdrawModal,
 } from '@components';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useLayoutEffect, useState } from 'react';
 
 export default function Conta() {
   const [tabIndex, setTabIndex] = useState(0);
   const { accountHistory, balance } = useAccount();
+  const router = useRouter();
+
+  useLayoutEffect(() => {
+    if (!localStorage.getItem('session')) {
+      router.push('/');
+    }
+  }, [router]);
 
   const handleTabChange = (index: number) => {
     setTabIndex(index);

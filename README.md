@@ -5,8 +5,6 @@
 
 > Esse projeto tem como objetivo desenvolver um aplicativo de investimento em ações, com algumas funcionalidades de conta digital
 
-<br />
-
 #### 🖥 [Link do deploy](https://xp-technical-challenge.vercel.app/)
 
 ##### Desenvolvido com 💙 por [Rafael França](https://www.linkedin.com/in/rafaelgiori/) 👨‍💻
@@ -41,17 +39,18 @@
   - Desenvolver uma interface bonita e responsiva para diversos dispositivos.
   - Utilizar uma base de dados para simular as ações do cliente.
   - Prover um ambiente em nuvem (deploy e base de dados) para o teste e desenvolvimento da aplicação se assemelhar a um case real.
+  - Prover código limpo e legível.
 
 </details>
 
 - <details>
   <summary><strong>🔌 Tomadas de decisão</strong></summary><br />
 
-  - Para criar uma interface bonita e responsiva para diversos dispositivos, foram utilizados os frameworks [NextJS](https://nextjs.org/) e o [Tailwind CSS](https://tailwindcss.com/) em conjunto com a biblioteca de componentes [Daisy UI](https://daisyui.com/) 💄.
+  - Para criar a interface, foram utilizados os frameworks [NextJS](https://nextjs.org/) e o [Tailwind CSS](https://tailwindcss.com/) em conjunto com a biblioteca de componentes [Daisy UI](https://daisyui.com/) 💄.
   - Com o objetivo de maximizar a experiência do cliente e validar as suas ações em tempo real, foi utilizado a biblioteca [React Hook Form](https://react-hook-form.com/) em conjunto com [Yup](https://github.com/jquense/yup) para validação de formulários 🚨.
   - O ambiente escolhido para armazenar as informações do cliente foi o [Supabase](https://supabase.com/), que oferece um acesso baseado em nuvem a um banco de dados [PostgreSQL](https://www.postgresql.org/) 🐘.
-  - Para modelar as [entidades](prisma/ERD.svg) da base de dados e comunicar as ações do cliente com essa base, foram utilizados o [Prisma ORM](https://www.prisma.io/) e as [API Routes](https://nextjs.org/docs/api-routes/introduction) do NextJS 🚀.
-  - Para o desenvolvimento de testes unitários, foi utilizado o framework [Jest](https://jestjs.io/) e a [React Testing Library](https://testing-library.com/) 🐙.
+  - A modelagem das [entidades](prisma/ERD.svg) da base de dados e sua comunicação com as ações do cliente, foram realizadas com [Prisma ORM](https://www.prisma.io/) e as [API Routes](https://nextjs.org/docs/api-routes/introduction) do NextJS 🚀.
+  - No desenvolvimento de testes unitários, foi utilizado o framework [Jest](https://jestjs.io/) e a [React Testing Library](https://testing-library.com/) 🐙.
 
 </details>
 

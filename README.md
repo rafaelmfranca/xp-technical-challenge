@@ -9,7 +9,22 @@
 
 #### 🖥 [Link do deploy](https://xp-technical-challenge.vercel.app/)
 
-##### Desenvolvido com 💛 por [Rafael França](https://www.linkedin.com/in/rafaelgiori/) 👨‍💻
+##### Desenvolvido com 💙 por [Rafael França](https://www.linkedin.com/in/rafaelgiori/) 👨‍💻
+
+<br/>
+
+  <kbd>
+    <img
+      src="docs/assets/dark.gif"
+      title="Dark theme"
+    >
+  </kbd>
+  <kbd>
+    <img
+      src="docs/assets/light.gif"
+      title="Light theme"
+    >
+  </kbd>
 
 </div>
 
@@ -33,7 +48,7 @@
   <summary><strong>🔌 Tomadas de decisão</strong></summary><br />
 
   - Para criar uma interface bonita e responsiva para diversos dispositivos, foram utilizados os frameworks [NextJS](https://nextjs.org/) e o [Tailwind CSS](https://tailwindcss.com/) em conjunto com a biblioteca de componentes [Daisy UI](https://daisyui.com/) 💄.
-  - Com o objetivo de maximizar a experiência do cliente e validar as suas ações em tempo real, foi utilizado a biblioteca [React Hook Forms](https://react-hook-form.com/) em conjunto com [Yup](https://github.com/jquense/yup) para validação de formulários 🚨.
+  - Com o objetivo de maximizar a experiência do cliente e validar as suas ações em tempo real, foi utilizado a biblioteca [React Hook Form](https://react-hook-form.com/) em conjunto com [Yup](https://github.com/jquense/yup) para validação de formulários 🚨.
   - O ambiente escolhido para armazenar as informações do cliente foi o [Supabase](https://supabase.com/), que oferece um acesso baseado em nuvem a um banco de dados [PostgreSQL](https://www.postgresql.org/) 🐘.
   - Para modelar as [entidades](prisma/ERD.svg) da base de dados e comunicar as ações do cliente com essa base, foram utilizados o [Prisma ORM](https://www.prisma.io/) e as [API Routes](https://nextjs.org/docs/api-routes/introduction) do NextJS 🚀.
   - Para o desenvolvimento de testes unitários, foi utilizado o framework [Jest](https://jestjs.io/) e a [React Testing Library](https://testing-library.com/) 🐙.
@@ -62,7 +77,7 @@
 
 1. Esse projeto utiliza o [pnpm](https://pnpm.io/) como gerenciador de pacotes. Para instalá-lo, basta seguir [esse passo a passo](https://pnpm.io/installation).
 
-2. Para rodar a aplicação é necessário um banco de dados Postgres. Para isso, recomendo que o faça com [Docker](https://hevodata.com/learn/docker-postgresql/) ou simplesmente crie um projeto no [Supabase](https://supabase.com/) - e copie a URI fornecida em seu .env 😄 <strong>(Settings -> Database -> Connection String -> URI).</strong>
+2. Para rodar a aplicação é necessário um banco de dados Postgres. Para isso, recomendo que o faça com [Docker](https://hevodata.com/learn/docker-postgresql/) ou simplesmente crie um projeto no [Supabase](https://supabase.com/) - e copie a URI fornecida para seu .env 😄 <strong>(Settings -> Database -> Connection String -> URI).</strong>
 
 3. Clone o repositório do projeto:
 

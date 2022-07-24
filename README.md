@@ -39,7 +39,7 @@
   - Desenvolver uma interface bonita e responsiva para diversos dispositivos.
   - Utilizar uma base de dados para simular as ações do cliente.
   - Prover um ambiente em nuvem (deploy e base de dados) para o teste e desenvolvimento da aplicação se assemelhar a um case real.
-  - Prover código limpo e legível.
+  - Produzir código limpo e legível.
 
 </details>
 
